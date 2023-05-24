@@ -1,0 +1,67 @@
+<section *ngIf="success">
+    <h1>Success!</h1>
+    <p>
+        <a routerLink="/">Sign In</a>
+    </p>
+</section>
+
+<section *ngIf="!success">
+    <h1>Register</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+        <label for="user">
+            Username:
+            <span class="green"
+                *ngIf="registerForm.get('user')?.touched && !registerForm.get('user')?.errors">&#10003;</span>
+            <span class="red"
+                *ngIf="registerForm.get('user')?.touched && registerForm.get('user')?.errors">&#120;</span>
+        </label>
+        <input type="text" id="user" formControlName="user" />
+        <div class="errors-container">
+            <small *ngIf="registerForm.get('user')?.touched && registerForm.get('user')?.errors?.['required']">Username
+                is required</small>
+            <small *ngIf="registerForm.get('user')?.touched && registerForm.get('user')?.errors?.['minlength']">Username
+                should be minimum 4 and maximum 24 characters long.</small>
+        </div>
+
+        <label for="password">
+            Password:
+            <span class="green"
+                *ngIf="registerForm.get('pwd')?.touched && registerForm.get('pwd')?.valid || registerForm.get('pwd')?.value !== '' && !registerForm.errors?.['passwordMismatchError']">&#10003;</span>
+            <span class="red"
+                *ngIf="registerForm.get('pwd')?.touched && registerForm.get('pwd')?.errors">&#120;</span>
+        </label>
+        <input type="password" id="password" formControlName="pwd" />
+        <div class="errors-container">
+            <small *ngIf="registerForm.get('pwd')?.touched && registerForm.get('pwd')?.errors?.['required']">Username is
+                required</small>
+            <small *ngIf="registerForm.get('pwd')?.touched && registerForm.get('pwd')?.errors?.['minlength']">Password
+                should be minimum 8 and maximum 24 characters long.</small>
+        </div>
+
+        <label for="confirm_pwd">
+            Confirm Password:
+            <span class="green"
+                *ngIf="registerForm.get('pwd')?.value !== '' && registerForm.get('confirm_pwd')?.value !== '' && !registerForm.errors?.['passwordMismatchError']">&#10003;</span>
+            <span class="red"
+                *ngIf="registerForm.get('confirm_pwd')?.touched && registerForm.get('confirm_pwd')?.errors || registerForm.get('confirm_pwd')?.value !== '' && registerForm.errors?.['passwordMismatchError']">&#120;</span>
+        </label>
+        <input type="password" id="confirm_pwd" formControlName="confirm_pwd" />
+
+        <div class="errors-container">
+            <small
+                *ngIf="registerForm.get('confirm_pwd')?.touched && registerForm.get('confirm_pwd')?.errors?.['required']">Confirm
+                password is required</small>
+            <small
+                *ngIf="registerForm.get('confirm_pwd')?.touched && registerForm.errors?.['passwordMismatchError']">Passwords
+                don't match</small>
+        </div>
+
+        <button [disabled]="registerForm.invalid">Sign Up</button>
+    </form>
+    <p>
+        Already registered?<br />
+        <span className="line">
+            <a routerLink="/">Sign In</a>
+        </span>
+    </p>
+</section>

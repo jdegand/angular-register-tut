@@ -1,0 +1,16 @@
+<section>
+    <h1>Admins Page</h1>
+    <br />
+    <div>
+        <h2>Users List</h2>
+        <ul *ngFor="let user of users; index as i;">
+            <li key="i">
+                {{user.username}}
+            </li>
+        </ul>
+    </div>
+    <br />
+    <div className="flexGrow">
+        <a routerLink="/home">Home</a>
+    </div>
+</section>

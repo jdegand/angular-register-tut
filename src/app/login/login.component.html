@@ -1,0 +1,35 @@
+<section>
+    <div class="errmsg" *ngIf="error">Unauthorized</div>
+    <h1>Sign In</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <label for="user">Username:</label>
+        <input
+            type="text"
+            id="user"
+            formControlName="user"
+        />
+
+        <label for="password">Password:</label>
+        <input
+            type="password"
+            id="password"
+            formControlName="pwd"
+        />
+        <button>Sign In</button>
+        <br>
+        <div className="persistCheck">
+            <input
+                type="checkbox"
+                id="persist"
+                formControlName="persist"
+            />
+            <label for="persist">Trust This Device</label>
+        </div>
+    </form>
+    <p>
+        Need an Account?<br />
+        <span className="line">
+            <a routerLink="/register">Sign Up</a>
+        </span>
+    </p>
+</section>
