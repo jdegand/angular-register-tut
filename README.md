@@ -69,7 +69,7 @@ The Express application runs by default on `http://localhost:4000` and has the f
 
 ### Running the Express Backend Application
 
-You can clone my the whole [repo](https://github.com/jdegand/mongo-async-crud) and checkout to the angular branch or just clone the angular branch.  
+You can clone the [repo](https://github.com/jdegand/mongo-async-crud)'s angular branch with the command below.  
 
 ```bash 
 
